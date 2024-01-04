@@ -6,8 +6,8 @@ class NoteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Note
-        fields = ('title', 'content', 'owner', 'created_at')
-        extra_kwargs = {'created_at':{'read_only':True}, 'owner':{'read_only':True}}
+        fields = ('id', 'title', 'content', 'owner', 'created_at')
+        extra_kwargs = {'created_at':{'read_only':True}, 'owner':{'read_only':True}, 'id': {'read_only': True}}
     
     def get_owner(self, obj):
         return obj.owner.first_name if obj.owner else None
