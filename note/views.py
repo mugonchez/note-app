@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 
+
 from .serializers import NoteSerializer
 from .models import Note
 from authentication.models import User
@@ -12,7 +13,6 @@ from authentication.models import User
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def note_view(request):
-
     #list all authenticated user notes
     if request.method == 'GET':
         notes = Note.objects.filter(owner=request.user)
@@ -76,7 +76,16 @@ def share_note_view(request, id, user_id):
 
 
     
-
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def search_notes(request):
+    query = request.query_params.get('q', None)
+    if query:
+        notes = Note.objects.filter(owner=request.user, title__icontains=query)
+        serializer = NoteSerializer(notes, many=True)
+        return Response(serializer.data)
+    else:
+        return Response({'error': 'Please provide a serch query to continue'}, status=status.HTTP_400_BAD_REQUEST)
     
 
 
