@@ -25,10 +25,10 @@ env = environ.Env()
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('APPLICATION_SECRET_KEY')
+SECRET_KEY = 'django-insecure-wsw0y$y))-oamc395b=v^s9=6+&lz9gm4jr03)s@97gmza%^fn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG_SETTING')
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -62,8 +62,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '5/minute',
-        'user': '10/minute'
+        'anon': '20/minute',
+        'user': '40/minute'
     }
 }
 
@@ -137,9 +137,9 @@ WSGI_APPLICATION = 'note_app.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': env('DATABASE_NAME'),
-    'USER':env('DATABASE_USER'),
-    'PASSWORD': env('DATABASE_USER_PASSWORD'),
+    'NAME': 'note_db',
+    'USER': 'note_user',
+    'PASSWORD': 'n0t3p@ss',
     'HOST': 'localhost',
     'PORT': '',
     }

@@ -1,12 +1,9 @@
-import json
 from django.test import TestCase
 from authentication.models import User
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
-from django.core import mail
-from django.conf import settings
 
 
 class TestAuthAPIs(TestCase):
