@@ -22,8 +22,10 @@ def note_view(request):
     
     # create note for authenticated user
     if request.method == 'POST':
-        serializer = NoteSerializer(data=request.data, context={'request': request})
+        serializer = NoteSerializer(data=request.data)
         if serializer.is_valid():
+            # Assign the current user as the owner of the note
+            serializer.validated_data['owner'] = request.user
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

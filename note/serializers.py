@@ -12,12 +12,4 @@ class NoteSerializer(serializers.ModelSerializer):
     def get_owner(self, obj):
         return obj.owner.first_name if obj.owner else None
 
-    def create(self, validated_data):
-        # Retrieve the authenticated user from the request object
-        user = self.context['request'].user
-
-        # Add the user to the validated data before creating the note
-        validated_data['owner'] = user
-
-        return super().create(validated_data)
 
