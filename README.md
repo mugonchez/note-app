@@ -5,7 +5,7 @@ A RESTful API that allows users to create, read, update, and delete notes. The a
 The backbone of my application is built upon Django Rest Framework with a robust PostgreSQL database. This powerful combination ensures data integrity, scalability, and performance.
 
 ## Authentication with JWT
-Security is paramount. My system employs JWT (JSON Web Token) authentication, offering a secure and efficient method to authorize users, ensuring that only authenticated users access my system's resources.
+Security is paramount. My system employs JWT (JSON Web Token) authentication, offering a secure and efficient method to authorize users, ensuring that only authenticated users access the system's resources.
 
 ## Rate Limit and Throttling for Enhanced Control
 To maintain optimal performance and prevent abuse, I've implemented a rate limit and throttling mechanism. Authenticated users can make up to 40 requests per minute, while non-authenticated users are limited to 20 requests per minute. These values are customizable, allowing fine-tuning as per application requirements, all managed conveniently within the settings file.
